@@ -47,5 +47,13 @@ namespace MeshDraw
             //vertices[rows * cols + 1] = Vector3.down * (rows - 1);
             _shape.LowerPole = Vector3.down * (rows - 1);
         }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown("space"))
+            {
+                _shape.color = Color.green;
+            }
+        }
     }
 }

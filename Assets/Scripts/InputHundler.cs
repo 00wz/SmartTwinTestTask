@@ -17,7 +17,7 @@ public class InputHundler : MonoBehaviour
             if(Physics.Raycast(ray, out RaycastHit hit) &&
                 hit.collider.TryGetComponent<IClickable>(out IClickable clickable))
             {
-                clickable.OnClick();
+                clickable.OnClick(hit.point, Input.mousePosition);
             }
             else
             {

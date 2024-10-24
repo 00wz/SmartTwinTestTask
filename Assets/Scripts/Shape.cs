@@ -5,8 +5,8 @@ namespace MeshDraw
 {
     public class Shape
     {
-        readonly public Vector3[] _vertices;
-        readonly public List<int> _triangles;
+        readonly private Vector3[] _vertices;
+        readonly private List<int> _triangles;
         readonly private int _parallelsCount;
         readonly private int _meridiansCount;
         readonly private int _upperPoleIndex;
@@ -26,8 +26,8 @@ namespace MeshDraw
 
         public Vector3 this [int parallel, int meridian]
         {
-            get => _vertices[parallel * _parallelsCount + meridian];
-            set => _vertices[parallel * _parallelsCount + meridian] = value;
+            get => _vertices[parallel * _meridiansCount + meridian];
+            set => _vertices[parallel * _meridiansCount + meridian] = value;
         }
 
         public Vector3 UpperPole

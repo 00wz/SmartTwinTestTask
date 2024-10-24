@@ -4,15 +4,20 @@ using UnityEngine;
 namespace MeshDraw
 {
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
-    public class TestMesh : MonoBehaviour
+    public class TestMesh : MonoBehaviour, IClickable
     {
-        private Mesh _mesh;
-        static int cols = 10;
-        static int rows = 10;
-        //private Vector3[] vertices;
-        //List<int> triangles;
-        private Shape _shape;
         [SerializeField] MeshCollider meshCollider;
+        [SerializeField] GameObject editingWindow;
+        private Mesh _mesh;
+        static int sidesCount = 6;
+        //static int rows = 10;
+        float height = 5f;
+        private Shape _shape;
+
+        private void Awake()
+        {
+            //editingWindow.SetActive(false);
+        }
 
         void Start()
         {
@@ -20,43 +25,56 @@ namespace MeshDraw
 
             CreateMesh();
 
-            //_mesh.vertices = vertices;
-            //_mesh.triangles = triangles.ToArray();
             _shape.AssignMesh(_mesh);
-            //meshCollider.sharedMesh = null;
             meshCollider.sharedMesh = _mesh;
         }
 
 
         private void CreateMesh()
         {
-            //Utils.CreateClosedMesh(rows, cols, out vertices, out triangles);
-            _shape = new(rows, cols);
+            int doubleSidesCount = sidesCount * 2;
+            _shape = new(4, doubleSidesCount);
 
             Vector3 azimuth = Vector3.forward;
-            var sideDeltaAngle = Quaternion.Euler(0f, 360f / cols, 0f);
-            for (int i = 0; i < cols; i++)
+            Vector3 halfHaight = Vector3.up * height * 0.5f;
+            _shape.UpperPole = halfHaight;
+            _shape.LowerPole = -halfHaight;
+            var sideDeltaAngle = Quaternion.Euler(0f, 360f / sidesCount, 0f);
+
+            for (int side = 0; side < doubleSidesCount; side += 2)
             {
-                Vector3 curentVertex = azimuth;
-                for (int x = 0; x < rows; x++)
-                {
-                    //vertices[x * rows + i] = curentVertex;
-                    _shape[x, i] = curentVertex;
-                    curentVertex += Vector3.down;
-                }
+                Vector3 currentVertex = azimuth + halfHaight;
+                _shape[0, side] = currentVertex;
+                _shape[1, side] = currentVertex;
+                _shape[0, side + 1] = currentVertex;
+                _shape[1, side + 1] = currentVertex;
+
+                currentVertex = azimuth - halfHaight;
+
+                _shape[2, side] = currentVertex;
+                _shape[3, side] = currentVertex;
+                _shape[2, side + 1] = currentVertex;
+                _shape[3, side + 1] = currentVertex;
+
                 azimuth = sideDeltaAngle * azimuth;
             }
-
-            //vertices[rows * cols + 1] = Vector3.down * (rows - 1);
-            _shape.LowerPole = Vector3.down * (rows - 1);
+            /*
+            string message = "";
+            for(int row = 0; row < 4; row++)
+            {
+                for(int col = 0; col < sidesCount; col++)
+                {
+                    message += $"[{row}, {col}]: {_shape[row, col]}";
+                }
+                message += "\n";
+            }
+            Debug.Log(message);*/
         }
 
-        private void Update()
+        public void OnClick(Vector3 clickWorldPosition, Vector3 clickScreenPosition)
         {
-            if(Input.GetKeyDown("space"))
-            {
-                _shape.color = Color.green;
-            }
+            editingWindow.transform.position = clickScreenPosition;
+            editingWindow.SetActive(true);
         }
     }
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IClickable
 {
-    public void OnClick();
+    public void OnClick(Vector3 clickWorldPosition, Vector3 clickScreenPosition);
 }

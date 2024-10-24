@@ -47,7 +47,7 @@ namespace MeshDraw
         /// <param name="rowsCount">the number of rows in the mesh</param>
         /// <param name="colsCount">the number of columns in the mesh</param>
         /// <param name="vertices">array of vertices, 
-        /// where the index of each vertex is (y * <paramref name="rowsCount"/> + x)</param>
+        /// where the index of each vertex is (y * <paramref name="colsCount"/> + x)</param>
         /// <param name="triangles">list of triangles</param>
         public static void CreateTubeShapedMesh(int rowsCount, int colsCount, ref Vector3[] vertices,
             out List<int> triangles)
@@ -59,10 +59,10 @@ namespace MeshDraw
             int decrementedRowsCount = rowsCount - 1;
             for (int row = 0; row < decrementedRowsCount; row++)
             {
-                AppendSquare(row * rowsCount + decrementedColsCount,
-                            row * rowsCount,
-                            (row + 1) * rowsCount,
-                            (row + 1) * rowsCount + decrementedColsCount,
+                AppendSquare(row * colsCount + decrementedColsCount,
+                            row * colsCount,
+                            (row + 1) * colsCount,
+                            (row + 1) * colsCount + decrementedColsCount,
                             triangles);
             }
         }
@@ -75,7 +75,7 @@ namespace MeshDraw
         /// <param name="rowsCount">the number of rows in the mesh</param>
         /// <param name="colsCount">the number of columns in the mesh</param>
         /// <param name="vertices">array of vertices, 
-        /// where the index of each vertex is (y * <paramref name="rowsCount"/> + x)</param>
+        /// where the index of each vertex is (y * <paramref name="colsCount"/> + x)</param>
         /// <param name="triangles">list of triangles</param>
         public static void CreateSquareMesh(int rowsCount, int colsCount, ref Vector3[] vertices,
             out List<int> triangles)
@@ -100,10 +100,10 @@ namespace MeshDraw
             {
                 for (int col = 0; col < decrementedColsCount; col++)
                 {
-                    AppendSquare(row * rowsCount + col,
-                                 row * rowsCount + col + 1,
-                                 (row + 1) * rowsCount + col + 1,
-                                 (row + 1) * rowsCount + col,
+                    AppendSquare(row * colsCount + col,
+                                 row * colsCount + col + 1,
+                                 (row + 1) * colsCount + col + 1,
+                                 (row + 1) * colsCount + col,
                                  triangles);
                 }
             }

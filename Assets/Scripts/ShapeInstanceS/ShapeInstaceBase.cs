@@ -10,6 +10,7 @@ namespace MeshDraw
         private Mesh _mesh;
         private MeshCollider _meshCollider;
         private Shape _shape;
+        private Color _color = Color.white;
 
         private void Awake()
         {
@@ -25,6 +26,7 @@ namespace MeshDraw
 
         public void SetColor(Color color)
         {
+            _color = color;
             _shape.color = color;
         }
 
@@ -32,6 +34,7 @@ namespace MeshDraw
         {
             _shape = CreateShape();
             _shape.AssignMesh(_mesh);
+            _shape.color = _color;
             _meshCollider.sharedMesh = _mesh;
         }
 

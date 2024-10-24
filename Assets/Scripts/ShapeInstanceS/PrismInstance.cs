@@ -10,12 +10,12 @@ namespace MeshDraw
         [SerializeField] private float height = 5f;
         [SerializeField] private float radius = 5f;
 
-        public int SidesCount
+        public float SidesCount
         {
             get => sidesCount;
             set
             {
-                sidesCount = value;
+                sidesCount = (int)value;
                 RedrawMesh();
             }
         }

@@ -909,9 +909,9 @@ GameObject:
   - component: {fileID: 2646778253416680083}
   - component: {fileID: 210685167976333223}
   - component: {fileID: 4151233227915887826}
-  - component: {fileID: 1097669083220927344}
+  - component: {fileID: 5410119482803592006}
   m_Layer: 0
-  m_Name: PrismInstance
+  m_Name: CapsuleInstance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1005,7 +1005,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1097669083220927344
+--- !u!114 &5410119482803592006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1014,13 +1014,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3998722089652741324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0bd4790d30ffb41ad988bba411133e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ab11a909db1f7f41895f733d69ca6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   editingWindow: {fileID: 6894297944507406418}
-  sidesCount: 5
+  sidesCount: 10
   height: 2
-  radius: 1
+  radius: 0.5
 --- !u!1 &4056296634137216305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,8 +1411,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1097669083220927344}
-        m_TargetAssemblyTypeName: MeshDraw.PrismInstance, Assembly-CSharp
+      - m_Target: {fileID: 5410119482803592006}
+        m_TargetAssemblyTypeName: MeshDraw.CapsuleInstance, Assembly-CSharp
         m_MethodName: set_Height
         m_Mode: 0
         m_Arguments:
@@ -2167,7 +2167,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1097669083220927344}
+      - m_Target: {fileID: 5410119482803592006}
         m_TargetAssemblyTypeName: MeshDraw.ShapeInstaceBase, Assembly-CSharp
         m_MethodName: Delete
         m_Mode: 1
@@ -2327,7 +2327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb71b838c9bc1184fb3badb11583a171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prismInstance: {fileID: 1097669083220927344}
+  prismInstance: {fileID: 5410119482803592006}
 --- !u!1 &7420401775108738801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,8 +2454,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1097669083220927344}
-        m_TargetAssemblyTypeName: MeshDraw.PrismInstance, Assembly-CSharp
+      - m_Target: {fileID: 5410119482803592006}
+        m_TargetAssemblyTypeName: MeshDraw.CapsuleInstance, Assembly-CSharp
         m_MethodName: set_Radius
         m_Mode: 0
         m_Arguments:
@@ -2797,8 +2797,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1097669083220927344}
-        m_TargetAssemblyTypeName: MeshDraw.PrismInstance, Assembly-CSharp
+      - m_Target: {fileID: 5410119482803592006}
+        m_TargetAssemblyTypeName: MeshDraw.CapsuleInstance, Assembly-CSharp
         m_MethodName: set_SidesCount
         m_Mode: 0
         m_Arguments:

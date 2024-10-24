@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 3998722089652741324, guid: da1870178ef5557418f82a89522a1904, type: 3}
+  - {fileID: 3998722089652741324, guid: 163afc3c44d48744eb39f55b492cf9a3, type: 3}
   spawnWindow: {fileID: 398960940}
 --- !u!4 &90026119
 Transform:

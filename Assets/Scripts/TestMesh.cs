@@ -12,6 +12,7 @@ namespace MeshDraw
         //private Vector3[] vertices;
         //List<int> triangles;
         private Shape _shape;
+        [SerializeField] MeshCollider meshCollider;
 
         void Start()
         {
@@ -22,6 +23,8 @@ namespace MeshDraw
             //_mesh.vertices = vertices;
             //_mesh.triangles = triangles.ToArray();
             _shape.AssignMesh(_mesh);
+            //meshCollider.sharedMesh = null;
+            meshCollider.sharedMesh = _mesh;
         }
 
 

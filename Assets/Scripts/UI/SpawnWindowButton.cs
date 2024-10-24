@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class SpawnWindowButton : MonoBehaviour
+namespace MeshDraw
 {
-    [SerializeField] Text text;
-
-    public void Init(UnityAction onClick, string label)
+    [RequireComponent(typeof(Button))]
+    public class SpawnWindowButton : MonoBehaviour
     {
-        GetComponent<Button>().onClick.AddListener(onClick);
-        text.text = label;
+        [SerializeField] Text text;
+
+        public void Init(UnityAction onClick, string label)
+        {
+            GetComponent<Button>().onClick.AddListener(onClick);
+            text.text = label;
+        }
     }
 }

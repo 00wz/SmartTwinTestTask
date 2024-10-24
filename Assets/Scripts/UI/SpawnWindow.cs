@@ -3,36 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnWindow : MonoBehaviour
+namespace MeshDraw
 {
-    [SerializeField] SpawnWindowButton buttonPrefab;
-
-    public void Init(List<GameObject> prefabs, Action<GameObject> onPrefabSelect)
+    public class SpawnWindow : MonoBehaviour
     {
-        foreach(var pref in prefabs)
+        [SerializeField] SpawnWindowButton buttonPrefab;
+
+        public void Init(List<GameObject> prefabs, Action<GameObject> onPrefabSelect)
         {
-            SpawnWindowButton button = Instantiate(buttonPrefab, transform);
-            button.Init(
-                () =>
-                {
-                    onPrefabSelect?.Invoke(pref);
-                    HideWindow();
-                }, pref.name);
+            foreach (var pref in prefabs)
+            {
+                SpawnWindowButton button = Instantiate(buttonPrefab, transform);
+                button.Init(
+                    () =>
+                    {
+                        onPrefabSelect?.Invoke(pref);
+                        HideWindow();
+                    }, pref.name);
+            }
+
+            //hide window button
+            SpawnWindowButton exitButton = Instantiate(buttonPrefab, transform);
+            exitButton.Init(
+                () => HideWindow(), "close");
         }
 
-        //hide window button
-        SpawnWindowButton exitButton = Instantiate(buttonPrefab, transform);
-        exitButton.Init(
-            () => HideWindow(), "close");
-    }
+        public void ShowWindow()
+        {
+            gameObject.SetActive(true);
+        }
 
-    public void ShowWindow()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void HideWindow()
-    {
-        gameObject.SetActive(false);
+        public void HideWindow()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

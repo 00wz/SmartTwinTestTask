@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace MeshDraw
 {
+    /// <summary>
+    /// class representing a mesh of vertices in the form of parallels and meridians.
+    /// </summary>
     public class Shape
     {
         readonly private Vector3[] _vertices;
@@ -24,18 +27,31 @@ namespace MeshDraw
             _colors = new Color[_vertices.Length];
         }
 
+        /// <summary>
+        /// access to the vertex at the intersection of <paramref name="parallel"/> 
+        /// and <paramref name="meridian"/>
+        /// </summary>
+        /// <param name="parallel"></param>
+        /// <param name="meridian"></param>
+        /// <returns></returns>
         public Vector3 this [int parallel, int meridian]
         {
             get => _vertices[parallel * _meridiansCount + meridian];
             set => _vertices[parallel * _meridiansCount + meridian] = value;
         }
 
+        /// <summary>
+        /// top vertex at the intersection of all meridians
+        /// </summary>
         public Vector3 UpperPole
         {
             get => _vertices[_upperPoleIndex];
             set => _vertices[_upperPoleIndex] = value;
         }
 
+        /// <summary>
+        /// lower vertex at the intersection of all meridians
+        /// </summary>
         public Vector3 LowerPole
         {
             get => _vertices[_lowerPoleIndex];
